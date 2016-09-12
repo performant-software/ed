@@ -1,0 +1,4 @@
+#annotation-well .select2-container .select2-search__field:not([placeholder='']) {
+  width: 100% !important;
+  margin-right: 250px;
+}

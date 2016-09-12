@@ -73,7 +73,7 @@ body {
  */
 
 .container {
-  max-width: 38rem;
+  max-width: 50rem;
   padding-left:  1rem;
   padding-right: 1rem;
   margin-left:  auto;
@@ -87,7 +87,7 @@ body {
 }
 @media (min-width: 56em) {
   .container {
-    max-width: 38rem;
+    max-width: 50rem;
   }
 }
 
