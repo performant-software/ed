@@ -11,6 +11,7 @@ layout: default
   </div>
   <div class="col-md-6">
     <div id="annotation-well">
+    <h4>Filter</h4>
     <select id="tag-filter" multiple="multiple">
         <option></option>
     </select>
@@ -21,7 +22,9 @@ layout: default
         <option></option>
     </select>
     <hr>
-    <div id="annotation-viewer"></div>
+    <h4>View</h4>
+    <div id="annotation-viewer">
+    </div>
     </div><!--/well -->
   </div>
 </div>
@@ -73,32 +76,47 @@ layout: default
   });
 
   annotations.click(function(a){
+    var idtarget = a.target;
+
+    $(".glyphicon-comment").remove();
+    $(idtarget).prepend('<i class="glyphicon glyphicon-comment"></i>');
+
     var customTags = [ '[%', '%]' ];
-    var anno = Object.assign({}, a.target.dataset)
-    anno.quote = $(a.target).text()
+    var anno = Object.assign({}, idtarget.dataset)
+
+    anno.quote = $(idtarget).text()
     var template = $('#annotation-template').html();
     Mustache.parse(template, customTags);
     var rendered = Mustache.render(template, anno);
     $("#annotation-viewer").html(rendered);
+  
   });
-  // Testing mustache template: use this to set new delimiter tags {{page.setMustacheDelimiter}}
+
   // TODO: Implement Next/Previous Annotation Buttons.
   // TODO: Implement Next/Previous Viewport's-worth Buttons. (page breaks?)
+
 </script>
 <script type="text/template" id="annotation-template">
-    <span id="quote[%uuid%]" class="sbquote details">
-        Quote: &quot;[%quote%]&quot;
-    </span><br>
-    <span id="text[%uuid%]" class="sbtext details">
-        Comment: [%&text%]
-    </span><br>
-    <span id="info[%uuid%]" class="sbinfo details">
-        Author: [%username%]
-    </span><br>
-    <div id="tags[%uuid%]" class="sbtags details">
-        Tags: [%#tags%]<span class="label label-default">[%.%]</span> [%/tags%]
-    </div><br>
-    <div id="categories[%uuid%]" class="sbcats details">
-        Categories: [%#annotation_categories%]<span class="label label-default">[%.%]</span> [%/annotation_categories%]
-    </div><br>
+    <table id="annotation-table">
+        <tr>
+            <td class="anno-label">Quote:</td>
+            <td><span id="quote[%uuid%]" class="sbquote details">&quot;[%quote%]&quot;</span></td>
+        </tr>
+        <tr>
+            <td class="anno-label">Comment:</td>
+            <td><span id="text[%uuid%]" class="sbtext details">[%&text%]</span></td>
+        </tr>
+        <tr>
+            <td class="anno-label">Author:</td>
+            <td><span id="info[%uuid%]" class="sbinfo details">[%username%]</span></td>
+        </tr>
+        <tr>
+            <td class="anno-label">Tags:</td>
+            <td><div id="tags[%uuid%]" class="sbtags details">[%#tags%]<span class="label label-default">[%.%]</span>[%/tags%]</div></td>
+        </tr>
+        <tr>
+            <td class="anno-label">Categories:</td>
+            <td><div id="categories[%uuid%]" class="sbcats details">[%#annotation_categories%]<span class="label label-default">[%.%]</span> [%/annotation_categories%]</div></td>
+        </tr>
+    </table>
 </script>

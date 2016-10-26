@@ -2,3 +2,18 @@
   width: 100% !important;
   margin-right: 250px;
 }
+
+table#annotation-table {
+	border: 1px dotted #CCC;
+	padding: 5px; 
+	width: 100%;
+}
+
+table#annotation-table td {
+	border: 1px dotted #CCC;
+	padding: 5px; 
+}
+
+table#annotation-table td.anno-label {
+	width: 50px;
+}
