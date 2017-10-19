@@ -5,15 +5,29 @@
 
 table#annotation-table {
 	border: 1px dotted #CCC;
-	padding: 5px; 
+	padding: 5px;
 	width: 100%;
 }
 
 table#annotation-table td {
 	border: 1px dotted #CCC;
-	padding: 5px; 
+	padding: 5px;
 }
 
 table#annotation-table td.anno-label {
 	width: 50px;
+}
+
+/* Puts the annotator thing at the bottom */
+body{
+	padding:0 0 20rem 0;
+}
+#annotation-well{
+	margin:0;
+	padding:1rem 2rem;
+	position:fixed;
+	width:100%;
+	bottom:0;
+	left:0;
+	background-color:lightblue;
 }
